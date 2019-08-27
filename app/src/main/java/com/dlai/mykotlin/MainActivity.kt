@@ -3,6 +3,11 @@ package com.dlai.mykotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+
+/**
+ * kotlin的空安全以及一些常用变量基础
+ */
 
 //1，AppCompatActivity后面的括号其实相当于java中的无参构造器
 class MainActivity : AppCompatActivity() {
@@ -65,6 +70,44 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    //判断类型 和 强制转换 判断类型用 is  强转用as
+    /**java
+     *   void Test(){
+        if ( TextView instanceof view) {
+        ((TextView) view).setText("");
+        }
+        }
+     kotlin 判断类型
+     */
+    fun Test(view :View){
+        if (view is TextView){
+            view.text = "11"
+        }
+    }
+    //也可以跟java一样强转
+    fun Test1(view :View){
+        (view as TextView).text = "11"
+    }
+
+
+    /**
+     *  view as? TextView
+        view as TextView?
+        view as? TextView?
+     */
+
+    //以上三种分别在什么情况下适用 !!代表开发者认为一定不是空 让编译器不用检查   暂时没有看出来什么意思
+
+    fun Test2(view :View?){
+        (view as? TextView)!!.text = "11"
+        (view as TextView?)!!.text = "11"
+        (view as? TextView?)!!.text = "11"
+    }
+
+
+
+
+
     
 
 
