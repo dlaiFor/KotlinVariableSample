@@ -12,6 +12,9 @@ import android.widget.TextView
 //1，AppCompatActivity后面的括号其实相当于java中的无参构造器
 class MainActivity : AppCompatActivity() {
     //2，属性为什么要求初始化呢？因为 Kotlin 的变量是没有默认值的
+    //这个 lateinit 的意思是：告诉编译器我没法第一时间就初始化，但我肯定会在使用它之前完成初始化的。
+    //它的作用就是让 IDE 不要对这个变量检查初始化和报错。换句话说，加了这个 lateinit 关键字，这个变量的初始化就全靠你自己了，编译器不帮你检查了。
+    //也就是可以再Oncreate里初始化了
      lateinit var view : View
 
     //3，kotlin 有空安全的设计 也就是相当于说在代码层面就能杜绝大部分空指针 直接报错了比如
